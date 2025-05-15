@@ -45,7 +45,7 @@ u:
 	svc #0
 	cmp r0, #0
 	bgt p
-i:
+s:
 	mov r0, #0
 	mov r7, #112
 	svc #0
