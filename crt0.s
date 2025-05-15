@@ -23,13 +23,13 @@ b:
 f:
 	ldrb r3, [r0]
 	cmp r3, #0
-	beq d
+	beq u
 	eor r3, r3, #X
 	strb r3, [r0]
 	add r0, r0, #1
 	subs r2, r2, #1
 	bne f
-d:
+u:
 	mov r1, sp
 	add r2, sp, #12
 	str r1, [r2]
