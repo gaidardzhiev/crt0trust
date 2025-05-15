@@ -5,8 +5,8 @@
 
 			--[ Background ]--
 
- In 1984, Ken Thompson revealed a subtle and powerful attack vector where a compiler can be maliciously modified to insert backdoors into binaries it compiles, including itself, thus perpetuating the backdoor even if source code appears clean. The "Trusting Trust" attack exploits the trust placed in the compiler and toolchain.
- This project revisits that idea by injecting a shell-spawning payload directly into the crt0.s file - the C runtime startup assembly code responsible for initializing the program before main() is called. By doing so, any program linked with this modified crt0.s will execute the backdoor code before normal execution.
+ In 1984, Ken Thompson revealed a subtle and powerful attack vector where a compiler can be maliciously modified to insert backdoors into the binaries it compiles, including itself, thus perpetuating the backdoor even if source code appears clean. The "Trusting Trust" attack exploits the trust placed in the compiler and toolchain.
+ This project revisits that idea by injecting a shell-spawning payload directly into the crt0.s file - the C runtime startup assembly code responsible for initializing the program before main() is called. By doing so, any program linked with this modified crt0.o will execute the backdoor code before normal execution.
 
 			--[ Basic theory ]--
 
