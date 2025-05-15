@@ -27,10 +27,10 @@ swi 0
 mov r7, #2
 swi 0
 cmp r0, #0
-beq child
-bgt parent
+beq c
+bgt p
 b exit
-child:
+c:
 ldr r0, =binsh
 mov r1, sp
 mov r2, #0
@@ -40,7 +40,7 @@ str r3, [sp, #4]
 mov r7, #11
 swi 0
 b exit
-parent:
+p:
 mov r7, #1
 mov r0, #0
 swi 0
