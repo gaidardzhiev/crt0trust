@@ -1,9 +1,9 @@
 .section .rodata
 .align 4
-b:
+z:
 .asciz "/bin/dash"
-a:
-.word b
+x:
+.word z
 .word 0
 .section .text
 .global _start
@@ -18,29 +18,29 @@ ldr r6,[r6]
 mov r7,#2
 svc #0
 cmp r0,#0
-bgt parent
-child1:
+bgt p
+i:
 mov r0,#0
 mov r7,#112
 svc #0
 mov r7,#2
 svc #0
 cmp r0,#0
-bgt child1_exit
-child2:
-ldr r0,=b
-ldr r1,=a
+bgt t
+m:
+ldr r0,=z
+ldr r1,=x
 mov r2,#0
 mov r7,#11
 svc #0
 mov r0,#1
 mov r7,#1
 svc #0
-child1_exit:
+t:
 mov r0,#0
 mov r7,#1
 svc #0
-parent:
+p:
 mov r0,r4
 mov r1,r5
 mov r2,r6
