@@ -52,8 +52,8 @@ s:
 	mov r7, #2
 	svc #0
 	cmp r0, #0
-	bgt t
-m:
+	bgt a
+c:
 	mov r0, sp
 	mov r1, r2
 	mov r2, #0
@@ -62,7 +62,7 @@ m:
 	mov r0, #1
 	mov r7, #1
 	svc #0
-t:
+a:
 	mov r0, #0
 	mov r7, #1
 	svc #0
