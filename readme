@@ -44,7 +44,7 @@ shell (/bin/sh) before calling the program's main() function. When a program is 
 
 			--[ References ]--
 
- Ken Thompson, "Reflections on Trusting Trust," Communications of the ACM,               Vol. 27, No. 8, August 1984.
+ Ken Thompson, "Reflections on Trusting Trust," Communications of the ACM, Vol. 27, No. 8, August 1984.
 
 			--[ Disclamer ]--
 
