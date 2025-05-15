@@ -13,14 +13,14 @@ _start:
 	mov r0, sp
 	ldr r1, =o
 	mov r2, #10
-c:
+b:
 	ldrb r3, [r1], #1
 	strb r3, [r0], #1
 	subs r2, r2, #1
-	bne c
+	bne b
 	mov r0, sp
 	mov r2, #10
-l:
+f:
 	ldrb r3, [r0]
 	cmp r3, #0
 	beq d
@@ -28,7 +28,7 @@ l:
 	strb r3, [r0]
 	add r0, r0, #1
 	subs r2, r2, #1
-	bne l
+	bne f
 d:
 	mov r1, sp
 	add r2, sp, #12
