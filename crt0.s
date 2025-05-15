@@ -9,6 +9,7 @@ a:
 .global _start
 .extern main
 _start:
+and sp, sp, #0xFFFFFFF8
 ldr r4,[sp]
 add r5,sp,#4
 ldr r5,[r5]
