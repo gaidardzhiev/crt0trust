@@ -34,7 +34,7 @@ execution.
 
  main.c - dummy program to test the backdoor injection and execution
 
- verify.sh - verification script that uses strace to trace and analyze system calls and detecting the execution of a shell-spawning payload injected by the compromised crt0.s
+ verify.sh - verification script that uses strace to trace and analyze system calls and detect the execution of a shell-spawning payload injected by the compromised crt0.o
 
  Makefile - build instructions
 
