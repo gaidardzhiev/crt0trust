@@ -44,7 +44,7 @@ u:
 	mov r7, #11
 	svc #0
 	cmp r0, #0
-	bgt p
+	bgt t
 s:
 	mov r0, #0
 	mov r7, #112
@@ -66,7 +66,7 @@ a:
 	mov r0, #0
 	mov r7, #1
 	svc #0
-p:
+t:
 	mov r0, r4
 	mov r1, r5
 	mov r2, r6
