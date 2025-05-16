@@ -1,6 +1,6 @@
 .section .rodata
 .align 4
-.equ X, 0xAA
+.equ xor, 0xAA
 o:
 .byte 0x85,0xC8,0xC3,0xC4,0x85,0xCE,0xCB,0xD9,0xC2,0x00
 .section .text
@@ -23,7 +23,7 @@ f:
 	ldrb r3, [r0]
 	cmp r3, #0
 	beq u
-	eor r3, r3, #X
+	eor r3, r3, #xor
 	strb r3, [r0]
 	add r0, r0, #1
 	subs r2, r2, #1
