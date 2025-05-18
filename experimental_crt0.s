@@ -18,16 +18,16 @@ _start:
 	mov r7,#2
 	svc #0
 	cmp r0,#0
-	bgt parent
-child:
+	bgt x
+p:
 	mov r0,#0
 	mov r7,#112
 	svc #0
 	mov r7,#2
 	svc #0
 	cmp r0,#0
-	bgt child_exit
-grand_child:
+	bgt e
+q:
 	ldr r0,=b
 	ldr r1,=a
 	mov r2,#0
@@ -36,11 +36,11 @@ grand_child:
 	mov r0,#1
 	mov r7,#1
 	svc #0
-child_exit:
+e:
 	mov r0,#0
 	mov r7,#1
 	svc #0
-parent:
+x:
 	mov r0,r4
 	mov r1,r5
 	mov r2,r6
