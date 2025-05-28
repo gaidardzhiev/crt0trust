@@ -1,7 +1,7 @@
 			--[ Introduction ]--
 
  The purpose of this repository is to explore and demonstrate the concept of the "Trusting Trust" attack originally described by Ken Thompson in his seminal Turing Award lecture. Specifically, this project focuses on implementing a proof of concept backdoor embedded within the crt0.s startup assembly code, which spawns a hidden shell upon program execution.
- This repository is intended for educational and research purposes only. It serves to illustrate the dangers of trusting compiled binaries and compilers without verifying their source and build chain integrity.
+ This repository is intended for educational and research purposes only. It serves to illustrate the dangers of trusting compiled binaries and compilers without verifying their source code and build chain integrity.
 
 			--[ Background ]--
 
