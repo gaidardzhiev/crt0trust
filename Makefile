@@ -1,6 +1,6 @@
 AS=as
 CC=gcc
-BIN=spawn_shell
+BIN=reverse_shell
 $(BIN): crt0.o main.o
 	$(CC) -static -nostdlib -e _start -o $(BIN) crt0.o main.o
 crt0.o: crt0.s
