@@ -1,12 +1,4 @@
-/*
- the program first calls fork syscall to create a child process
- the child then calls setsid syscall to start a new session
- and forks again to create a grandchild that executes /bin/dash via
- execve syscall the child process immediately exits using exit
- syscall to avoid zombies the original parent waits for the child
- and finally calls main before exiting effectively spawning a detached
- shell process through a double-fork and session detachment technique
-*/
+/* The program first calls the fork() syscall to create a child process; the child then calls the setsid() syscall to start a new session and forks again to create a grandchild that executes /bin/dash via the execve() syscall. The child process immediately exits using the exit() syscall to avoid zombies. The original parent waits for the child and finally calls main() before exiting, effectively spawning a detached shell process through a double-fork and session detachment technique... */
 
 .section .rodata
 .align 4
