@@ -27,4 +27,4 @@ grep -iE 'execve\(".*(/?(sh|bash|zsh|nc|netcat|python|perl|ruby))"' "$LOG" && pr
 
 grep -E 'dup2\([0-9]+, ?[0-2]\)' "$LOG" && printf "dup2 syscall DETECTED...\n\n"
 
-#rm "$LOG"
+rm "$LOG"
