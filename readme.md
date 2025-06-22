@@ -29,7 +29,7 @@ a minimal armv8l 32-bit linux C runtime startup example that demonstrates how a 
 dummy program to test the backdoor injection and execution
 
 - **verify.sh**
-verification script that uses strace to trace and analyze system calls and detect the execution of the reverse shell spawning payload injected by the compromised crt0.o
+verification script that uses strace to trace and analyze system calls and detect the execution of the reverse shell spawning payload injected by the compromised \*crt0.o
 
 - **Makefile**
 build instructions
