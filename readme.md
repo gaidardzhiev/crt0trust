@@ -1,12 +1,12 @@
 # Introduction
 
- The purpose of this repository is to explore and demonstrate the concept of the "Trusting Trust" attack originally described by Ken Thompson in his seminal Turing Award lecture. Specifically, this project focuses on implementing a proof of concept backdoor embedded within the crt0.s startup assembly code, which spawns a hidden reverse shell upon program execution.
+ The purpose of this repository is to explore and demonstrate the concept of the "Trusting Trust" attack originally described by Ken Thompson in his seminal Turing Award lecture. Specifically, this project focuses on implementing a proof of concept backdoor embedded within the `crt0.s` startup assembly code, which spawns a hidden reverse shell upon program execution.
  This repository is intended for educational and research purposes only. It serves to illustrate the dangers of trusting compiled binaries and compilers without verifying their source code and build chain integrity.
 
 # Background
 
  In 1984, Ken Thompson revealed a subtle and powerful attack vector where a compiler can be maliciously modified to insert backdoors into the binaries it compiles, including itself, thus perpetuating the backdoor even if source code appears clean. The "Trusting Trust" attack exploits the trust placed in the compiler and toolchain.
- This project revisits that idea by putting a reverse shell spawning payload directly into the C runtime startup assembly code responsible for initializing the program before main() is called. By doing so, any program linked with this modified crt0.o will execute the backdoor code before normal execution.
+ This project revisits that idea by putting a reverse shell spawning payload directly into the C runtime startup assembly code responsible for initializing the program before `main()` is called. By doing so, any program linked with this modified `crt0.o` will execute the backdoor code before normal execution.
 
 # Basic theory
 
@@ -16,9 +16,9 @@
 
 # How does it work
 
- Crt0 is a set of low level assembly execution startup routines linked first into every C program that sets up the runtime environment, initializes the stack, prepares argc, argv, and environment pointers and then calls the program’s main() function, acting as the very first code executed when the program starts. It generally takes the form of an object file called crt0.o, written in assembly language, which is automatically included by the linker into every executable file it builds.
- This malicious crt0.s is including assembly instructions that spawn's a reverse shell before calling the program's main() function. When a program is compiled and linked with this crt0.o, the resulting binary will execute the shell spawning code immediately upon startup. This backdoor is invisible in the C source code of the program itself and resides solely in the startup assembly, illustrating how trust in the toolchain can be exploited.
- By compromising crt0.o, which is linked into every compiled program and runs before main(), an attacker effectively inserts a hidden payload that executes before the program’s logic, mirroring the self propagating and stealthy nature of the original trusting trust attack.
+ Crt0 is a set of low level assembly execution startup routines linked first into every C program that sets up the runtime environment, initializes the stack, prepares argc, argv, and environment pointers and then calls the program’s `main()` function, acting as the very first code executed when the program starts. It generally takes the form of an object file called `crt0.o`, written in assembly language, which is automatically included by the linker into every executable file it builds.
+ This malicious crt0.s is including assembly instructions that spawn's a reverse shell before calling the program's `main()` function. When a program is compiled and linked with this `crt0.o`, the resulting binary will execute the shell spawning code immediately upon startup. This backdoor is invisible in the C source code of the program itself and resides solely in the startup assembly, illustrating how trust in the toolchain can be exploited.
+ By compromising `crt0.o`, which is linked into every compiled program and runs before `main()`, an attacker effectively inserts a hidden payload that executes before the program’s logic, mirroring the self propagating and stealthy nature of the original trusting trust attack.
 
 # Contents
 
