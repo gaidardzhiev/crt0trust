@@ -9,6 +9,7 @@ printf "%s\n\n" "$MSG" | pv -qL 30
 printf "\n%s\n\n" "$NC" | pv -qL 30
 
 printf "press ENTER once listener is ready...\n\n"
+
 read -r
 
 strace -f -s 1000 -e trace=execve,socket,connect,dup2 -o "$LOG" ./reverse_shell &
