@@ -36,8 +36,8 @@ build instructions
 
 # References
 
-- [ Ken Thompson "Reflections on Trusting Trust" Communications of the ACM, Volume 27, Issue 8, August 1984 ]
-( http://genius.cat-v.org/ken-thompson/texts/trusting-trust/ )
+- Ken Thompson "Reflections on Trusting Trust" Communications of the ACM, Volume 27, Issue 8, August 1984
+(http://genius.cat-v.org/ken-thompson/texts/trusting-trust/)
 
  Karger, P.A., and Schell, R.R. Multics Security Evaluation: Vulnerability Analysis. ESD-TR-74-193, Vol II, June 1974, p 52.
 
