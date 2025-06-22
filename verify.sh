@@ -1,13 +1,30 @@
 #!/bin/sh
 
-TODO="write a verification script that uses strace to trace and analyze system calls and detect the execution of a reverse shell spawning payload injected by the compromised crt0.o"
+MSG="this is a verification script that uses strace to trace and analyze system calls and detect the execution of a reverse shell spawning payload injected by the compromised crt0.o"
+NC="prepare the listener on a separate terminal: nc -l -p 4444"
+LOG="/tmp/strace_output.log"
 
-NC="on a separate terminal prepare the listener: nc -l -o 4444"
+printf "%s\n\n" "$MSG" | pv -qL 30
 
-REV="execute the reverse shell and analyze the syscalls: strace ./reverse_shell"
+printf "\n%s\n\n" "$NC" | pv -qL 30
 
-printf "%s\n\n" "$TODO"
+printf "press ENTER once listener is ready...\n\n"
+read -r
 
-printf "%s\n\n" "$NC"
+strace -f -s 1000 -e trace=execve,socket,connect,dup2 -o "$LOG" ./reverse_shell &
 
-printf "%s\n\n" "$REV"
+STRACE_PID="$!"
+
+sleep 10
+
+kill "$STRACE_PID" 2>/dev/null
+
+grep -E 'socket' "$LOG" && printf "socket syscall DETECTED...\n\n"
+
+grep -E 'connect\(.*htons\([0-9]{2,5}\)' "$LOG" && printf "connect syscall DETECTED...\n\n"
+
+grep -iE 'execve\(".*(/?(sh|bash|zsh|nc|netcat|python|perl|ruby))"' "$LOG" && printf "execvsyscall DETECTED...\n\n"
+
+grep -E 'dup2\([0-9]+, ?[0-2]\)' "$LOG" && printf "dup2 syscall DETECTED...\n\n"
+
+#rm "$LOG"
