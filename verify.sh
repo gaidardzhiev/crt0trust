@@ -24,7 +24,7 @@ grep -E 'socket' "$LOG" && printf "socket syscall DETECTED...\n\n"
 
 grep -E 'connect\(.*htons\([0-9]{2,5}\)' "$LOG" && printf "connect syscall DETECTED...\n\n"
 
-grep -iE 'execve\(".*(/?(sh|bash|zsh|nc|netcat|python|perl|ruby))"' "$LOG" && printf "execvsyscall DETECTED...\n\n"
+grep -iE 'execve\(".*(/?(sh|zsh|bash|dash))"' "$LOG" && printf "execvsyscall DETECTED...\n\n"
 
 grep -E 'dup2\([0-9]+, ?[0-2]\)' "$LOG" && printf "dup2 syscall DETECTED...\n\n"
 
