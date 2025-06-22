@@ -22,13 +22,17 @@
 
 # Contents
 
- crt0.s - a minimal armv8l 32-bit linux C runtime startup example that demonstrates how a backdoor reverse shell could be introduced at the lowest level of program initialization
+- **crt0.s**
+a minimal armv8l 32-bit linux C runtime startup example that demonstrates how a backdoor reverse shell could be introduced at the lowest level of program initialization
 
- main.c - dummy program to test the backdoor injection and execution
+- **main.c**
+dummy program to test the backdoor injection and execution
 
- verify.sh - verification script that uses strace to trace and analyze system calls and detect the execution of the reverse shell spawning payload injected by the compromised crt0.o
+- **verify.sh**
+verification script that uses strace to trace and analyze system calls and detect the execution of the reverse shell spawning payload injected by the compromised crt0.o
 
- Makefile - build instructions
+- **Makefile**
+build instructions
 
 # References
 
