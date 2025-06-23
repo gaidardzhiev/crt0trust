@@ -13,7 +13,7 @@ printf "%s\n\n" "$Z" | pv -qL 30
 
 read -r
 
-strace -f -s 1000 -e trace=execve,socket,connect,dup2 -o "$LOG" ./reverse_shell &
+strace -f -s 1000 -e trace=execve,socket,connect,dup2 -o "$W" ./reverse_shell &
 
 P="$!"
 
