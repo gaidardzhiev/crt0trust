@@ -18,7 +18,7 @@
 
  Crt0 is a set of low level assembly execution startup routines linked first into every C program that sets up the runtime environment, initializes the stack, prepares argc, argv, and environment pointers and then calls the program’s `main()` function, acting as the very first code executed when the program starts. It generally takes the form of an object file called `crt0.o`, written in assembly language, which is automatically included by the linker into every executable file it builds.
  This malicious `crt0.s` contains assembly instructions that spawn a reverse shell before calling the program's `main()` function. When a program is compiled and linked with this `crt0.o`, the resulting binary will execute the shell spawning code immediately upon startup. This backdoor is invisible in the C source code of the program itself and resides solely in the startup assembly, illustrating how trust in the toolchain can be exploited.
- By compromising `crt0.o`, which is linked into every compiled program and runs before `main()`, an attacker effectively inserts a hidden payload that executes before the program’s logic, mirroring the self propagating and stealthy nature of the original trusting trust attack.
+ By compromising `crt0.o`, which is linked into every compiled user space program and runs before `main()`, an attacker effectively inserts a hidden payload that executes before the program’s logic, mirroring the self propagating and stealthy nature of the original trusting trust attack.
 
 # Contents
 
