@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2025 Ivan Gaydardzhiev
+ * Licensed under the GPL-3.0-only
+ */
+
 .section .rodata
 .align 4
 z:
